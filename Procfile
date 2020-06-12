@@ -1,1 +1,1 @@
-web: gunicorn django_todo_app.wsgi
+web: gunicorn django_todo.wsgi

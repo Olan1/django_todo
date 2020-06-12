@@ -1,0 +1,1 @@
+web: gunicorn olans-todo-list.wsgi:application

@@ -27,7 +27,7 @@ SECRET_KEY = 'qss(vmp!u&x2zgdgytoevg0+(31bew9rn42!1p!cnjflar$k6#'
 DEBUG = True
 
 ALLOWED_HOSTS = ['54f051d622b94fe494d17c5301ecafc7.vfs.cloud9.us-east-1.amazonaws.com',
-                'https://olans-todo-list.herokuapp.com/']
+                'olans-todo-list.herokuapp.com']
 
 
 # Application definition

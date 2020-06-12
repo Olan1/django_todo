@@ -1,1 +1,1 @@
-web: gunicorn olans-todo-list.wsgi:application
+web: gunicorn --log-file=- olans-todo-list.wsgi:application

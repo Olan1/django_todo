@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add ToDo</title>
+</head>
+<body>
+
+<h1>Add ToDo</h1>
+
+<form action="addtodo/" method="post">
+{% csrf_token %}
+Item:<br>
+<input name="item">
+<br><br>
+Urgent:<br>
+<input name="urgent" type="checkbox">
+<br><br>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

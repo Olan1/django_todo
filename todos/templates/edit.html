@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit ToDo</title>
+</head>
+<body>
+
+<h1>Edit ToDo</h1>
+
+<form action="editrecord/{{ todo.id }}" method="post">
+{% csrf_token %}
+Item:<br>
+<input name="item" value="{{ todo.item }}">
+<br><br>
+Urgent:<br>
+<input name="urgent" type="checkbox" {% if todo.urgent %} checked {% endif %}>
+<br><br>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

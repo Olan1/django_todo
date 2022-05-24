@@ -3,36 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>ToDo List</title>
-
-    <!-- CSS only -->
+    <!-- Bootstrap CSS & icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 </head>
 <body>
-<h1>ToDo List</h1>
+<h1 class="text-bg-dark">ToDo List</h1>
 
-<table class="table">
+<table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th scope="col">Item</th>
-      <th scope="col">Urgent</th>
+        <th scope="col" class="text-center" style="width: 33.33%">#</th>
+        <th scope="col" class="text-center" style="width: 33.33%">Item</th>
+        <th scope="col" class="text-center" style="width: 33.33%">Done</th>
     </tr>
   </thead>
-  <tbody>
-  {% for todo in todos %}
-    <tr>
-      <td>{{ todo.item }}</td>
-      <td>{{ todo.urgent }}</td>
+  <tbody class="table-group-divider">
+  {% for todo in todos.all|dictsortreversed:"urgent" %}
+    <tr class="{% if todo.urgent %}table-danger{% else %}table-light{% endif %}" onclick="window.location='edit/{{ todo.id }}'"
+        onmouseover="" style="cursor: pointer;">
+        <th scope="row" class="text-center" data-bs-toggle="tooltip" data-bs-placement="right" title="Edit">{{ forloop.counter }}</th>
+        <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="right" title="Edit">{{ todo.item }}</td>
+        <!--<td><a href="edit/{{ todo.id }}"><i class="bi bi-pencil-square"></i></a></td>--!>
+        <td class="text-center"><a href="delete/{{ todo.id }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Done"><i class="bi bi-check2-square text-dark"></i></a></td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
 
-<p>
-<a href="add/">Add ToDo</a>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <button href="add/" type="button" class="btn btn-dark"><a href="add/" class="text-light text-decoration-none">Add ToDo</a></button>
+        </div>
+    </div>
+</div>
 
-<!-- JavaScript Bundle with Popper -->
+<!-- Bootstrap JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 </body>
 </html>
